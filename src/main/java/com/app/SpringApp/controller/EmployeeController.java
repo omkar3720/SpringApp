@@ -59,4 +59,34 @@ public String prelogin()
     }
 }
 
+@RequestMapping("edit")
+    public String editStudent(@RequestParam("cid") int id,Model m)
+{
+    Employee em = esi.editStudent(id);
+    m.addAttribute("employee",em);
+    return "edit";
+}
+
+@RequestMapping("/update")
+    public String updateData(@ModelAttribute Employee e,Model m)
+{
+    esi.updateData(e);
+    List<Employee> list = esi.findallData();
+    m.addAttribute("data",list);
+    return "success";
+}
+
+@RequestMapping("/delete")
+    public String deleteData(@RequestParam("cid") int id,Model m)
+{
+    esi.deleteData(id);
+    List<Employee> list = esi.findallData();
+    m.addAttribute("data",list);
+    return "success";
+}
+@RequestMapping("/back")
+    public String back()
+{
+    return "login";
+}
 }

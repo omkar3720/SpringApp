@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Employee List</title>
 
     <style>
@@ -17,7 +18,7 @@
 
         h2 {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         table {
@@ -47,6 +48,11 @@
 
 <h2>Registered Employee Details</h2>
 
+<!-- 🔙 Back Hyperlink -->
+<div style="width:90%; margin:auto; margin-bottom:10px;">
+    <a href="back">← Back</a>
+</div>
+
 <table>
     <tr>
         <th>Company ID</th>
@@ -55,9 +61,9 @@
         <th>Mobile No</th>
         <th>Username</th>
         <th>Password</th>
+        <th>Actions</th>
     </tr>
 
-    <!-- 🔁 Iterate Employee List -->
     <c:forEach var="emp" items="${data}">
         <tr>
             <td>${emp.cid}</td>
@@ -66,9 +72,12 @@
             <td>${emp.cmobNo}</td>
             <td>${emp.username}</td>
             <td>${emp.password}</td>
+            <td>
+                <a href="edit?cid=${emp.cid}">Edit</a> |
+                <a href="delete?cid=${emp.cid}">Delete</a>
+            </td>
         </tr>
     </c:forEach>
-
 </table>
 
 </body>

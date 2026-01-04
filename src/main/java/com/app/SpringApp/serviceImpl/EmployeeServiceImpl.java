@@ -30,4 +30,31 @@ public class EmployeeServiceImpl  implements EmployeeServiceI
             return eri.findByUsernameAndPassword(username,password);
         }
     }
+
+    @Override
+    public Employee editStudent(int id) {
+        return eri.findById(id).get();
+    }
+
+    @Override
+    public void updateData(Employee e) {
+        Employee em = eri.findById(e.getCid()).get();
+        em.setCname(e.getCname());
+        em.setCaddress(e.getCaddress());
+        em.setCmobNo(e.getCmobNo());
+        em.setUsername(e.getUsername());
+        em.setPassword(e.getPassword());
+        eri.save(em);
+
+    }
+
+    @Override
+    public List<Employee> findallData() {
+        return eri.findAll();
+    }
+
+    @Override
+    public void deleteData(int id) {
+        eri.deleteById(id);
+    }
 }
